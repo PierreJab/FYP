@@ -23,16 +23,13 @@ from scipy import optimize
 import math as m
 from mpl_toolkits.basemap import Basemap
 import pickle
-
-import sys
-sys.path.append('../Functions')
 from plt_func import add_arrow, compute_linear_boundaries
 
 
 
 # Parameters
 # --------------
-f = open('./workspaces/params_V01s.pckl', 'rb')
+f = open('./params.pckl', 'rb')
 alpha, fuel_burn_1, fuel_burn_2, aircraft_1, aircraft_2, destination = pickle.load(f)
 f.close()
 
@@ -76,7 +73,7 @@ RDV_plan = results['shgo'].x
 
 # Transatlantic map
 region = [-140, 0, 80, 90] # [long_left, lat_bottom, long_right, lat_top]
-output_file = './out_pictures/V_1_0_2.jpg'
+output_file = './outputs/basemap_flight_path.jpg'
 res_dpi = 600
 
     

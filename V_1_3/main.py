@@ -26,8 +26,6 @@ from mpl_toolkits.basemap import Basemap
 import great_circle_calculator.great_circle_calculator as gcc
 import pickle
 
-import sys
-sys.path.append('../Functions')
 from maths_func import haversine_distance
 from plt_func import add_arrow, compute_boundaries_great_circle
 
@@ -35,7 +33,7 @@ from plt_func import add_arrow, compute_boundaries_great_circle
 
 # Parameters
 # --------------
-f = open('./workspaces/params_V01s.pckl', 'rb')
+f = open('./params.pckl', 'rb')
 alpha, fuel_burn_1, fuel_burn_2, aircraft_1, aircraft_2, destination = pickle.load(f)
 f.close()
 
@@ -106,7 +104,7 @@ total_distance_hvs = d_1 + d_2 + d_3;
 
 # Map parameters
 region = [-140, 0, 80, 90] # [long_left, lat_bottom, long_right, lat_top]
-output_file = './out_pictures/V_1_0_3.jpg'
+output_file = './outputs/basemap_flight_path.jpg'
 res_dpi = 600
 
     
@@ -123,8 +121,8 @@ RDV = map.plot(RDV_hvs[0], RDV_hvs[1], 'kx', markersize=10, label='RDV')
 
 # Draw the boundaries
 p1, p2, p_RDV, p_d = (aircraft_1[0],aircraft_1[1]), (aircraft_2[0],aircraft_2[1]), (RDV_hvs[0], RDV_hvs[1]), (destination[0], destination[1])
-[point_set, y_1, y_2] = compute_boundaries_great_circle(p1, p2, p_d, 30)
-plt.fill_between(point_set, y_1,y_2, color='#163A6B', alpha=0.15, label='Boundaries', linewidth=0)
+#[point_set, y_1, y_2] = compute_boundaries_great_circle(p1, p2, p_d, 30)
+#plt.fill_between(point_set, y_1,y_2, color='#163A6B', alpha=0.15, label='Boundaries', linewidth=0)
 
 # Add connections
 line_1 = map.drawgreatcircle(aircraft_1[0],aircraft_1[1],RDV_hvs[0],RDV_hvs[1], linestyle="solid", linewidth=0.6, color='b', label='Joining route A1')
@@ -158,9 +156,9 @@ plt.savefig(output_file, dpi=res_dpi, bbox_inches = 'tight',
 
 
 
-# SAVING DATA
+# SAVING DATA FOR COMPARISON
 
 
-f = open('./workspaces/res_V01_3.pckl', 'wb')
-pickle.dump([RDV_hvs, fuel_spent_hvs, total_distance_hvs], f)
-f.close()
+#f = open('./workspaces/res_V01_3.pckl', 'wb')
+#pickle.dump([RDV_hvs, fuel_spent_hvs, total_distance_hvs], f)
+#f.close()

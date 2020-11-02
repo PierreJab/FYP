@@ -24,14 +24,12 @@ from scipy import optimize
 plt.style.use('default')
 import pickle
 
-import sys
-sys.path.append('../Functions')
 from plt_func import add_arrow
 
 
 # Parameters
 # --------------
-f = open('./workspaces/params_V01s.pckl', 'rb')
+f = open('./params.pckl', 'rb')
 alpha, fuel_burn_1, fuel_burn_2, aircraft_1, aircraft_2, destination = pickle.load(f)
 f.close()
 
@@ -96,7 +94,7 @@ print(results['shgo'])
 
 # Transatlantic map
 region = [-140, 0, 80, 90] # [long_left, lat_bottom, long_right, lat_top]
-output_file = './out_pictures/V_1_0_1.jpg'
+output_file = './outputs/basemap_flight_path.jpg'
 res_dpi = 600
     
 # Setting the map

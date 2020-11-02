@@ -27,8 +27,8 @@ aircraft_1 = [-73.567256, 45.5016889]; # Montreal
 #aircraft_1 = [-118.410042, 33.942791]; # Los Angeles
 
 # coordinates of aircraft 2 at time of change of course
-aircraft_2 = [-73.935242, 40.730610]; # New York
 aircraft_2 = [-80.191788, 25.761681]; # Miami
+#aircraft_2 = [-73.935242, 40.730610]; # New York
 
 # coordinates of destination
 destination = [-0.076132, 51.508530]; # London
@@ -37,7 +37,7 @@ destination = [-0.076132, 51.508530]; # London
 
 
 # Save to workspace
-f = open('../workspaces/params_V01s.pckl', 'wb')
+f = open('./params.pckl', 'wb')
 pickle.dump([alpha, fuel_burn_1, fuel_burn_2, aircraft_1, aircraft_2, destination], f)
 f.close()
 
